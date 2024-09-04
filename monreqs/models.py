@@ -6,9 +6,14 @@ class MonitoringRequest(models.Model):
         ONGOING = "O", _("Ongoing")
         PENDING = "P", _("Pending")
         CANCELLED = "C", _("Cancelled")
+    class VehicleType(models.TextChoices):
+        BOX_TRUCK = "BXT", _("Caminhão baú")
+        LIGHT_COM_VE = "LCV", _("VUC")
+        TRACTOR = "TCR", _("Caminhão reboque")
+
     status = models.CharField(max_length=1,choices=Status)
     shipping_company = models.CharField(max_length=255)
-    vehicle  = models.CharField(max_length=64)
+    vehicle  = models.CharField(max_length=3,choices=VehicleType)
     cargo_description = models.CharField(max_length=255)
     cargo_value = models.PositiveIntegerField()
 
