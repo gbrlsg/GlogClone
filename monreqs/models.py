@@ -3,9 +3,9 @@ from django.utils.translation import gettext_lazy as _
 
 class MonitoringRequest(models.Model):
     class Status(models.TextChoices):
-        ONGOING = "O", _("Ongoing")
-        PENDING = "P", _("Pending")
-        CANCELLED = "C", _("Cancelled")
+        ONGOING = "O", _("Em andamento")
+        PENDING = "P", _("Pendente")
+        CANCELLED = "C", _("Cancelada")
     class VehicleType(models.TextChoices):
         BOX_TRUCK = "BXT", _("Caminhão baú")
         LIGHT_COM_VE = "LCV", _("VUC")

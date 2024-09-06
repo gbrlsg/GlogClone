@@ -1,2 +1,38 @@
-<h1>Home</h1>
-<p>Bem-vindo(a) {{ request.user.username }}</p>
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid bg-warning d-flex flex-column min-vh-100">
+    <div class="bg-info row">
+        <h1>Home</h1>
+        <p>Bem-vindo(a) {{ request.user.username }}</p>
+        <p>Nº de SMs: {{ monitoringrequest_list|length }}</p>    
+    </div>
+    <div class="bg-success row m-1 mt-5">
+        <table class="table table-striped table-hover table-bordered table-light">
+            <thead>
+                <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Transportadora</th>
+                    <th scope="col">Veículo</th>
+                    <th scope="col">Carga</th>
+                    <th scope="col">Valor da Carga</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mr in monitoringrequest_list %}
+                <tr scope="row">
+                    <td>{{ mr.get_status_display }}</td>
+                    <td>{{ mr.pk }}</td>
+                    <td>{{ mr.shipping_company }}</td>
+                    <td>{{ mr.get_vehicle_display }}</td>
+                    <td>{{ mr.cargo_description }}</td>
+                    <td>{{ mr.cargo_value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endblock content %}    
+    </div>
+</div>
