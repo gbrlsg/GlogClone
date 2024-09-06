@@ -1,5 +1,8 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
+
+USER = get_user_model()
 
 class MonitoringRequest(models.Model):
     class Status(models.TextChoices):
@@ -16,6 +19,7 @@ class MonitoringRequest(models.Model):
     vehicle  = models.CharField(max_length=3,choices=VehicleType)
     cargo_description = models.CharField(max_length=255)
     cargo_value = models.PositiveIntegerField()
+    logins = models.ManyToManyField(USER,related_name="monreqs")
 
     def __str__(self) -> str:
         return self.pk
