@@ -5,9 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from monreqs.models import MonitoringRequest
 
-class HomeView(LoginRequiredMixin, ListView):
+class DashboardView(LoginRequiredMixin, ListView):
     model = MonitoringRequest
-    template_name = "home.html"
+    template_name = "dashboard.html"
 
     def get_queryset(self) -> QuerySet[Any]:
         self.queryset = self.request.user.monreqs.all()
