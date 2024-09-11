@@ -4,58 +4,62 @@
 
 <nav class="navbar navbar-expand-lg sticky-top bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand m-1" href="#">Golden Service</a>
+        <a class="navbar-brand" href="#">Golden Service</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-            </li>
-            <div class="collapse navbar-collapse" id="navbarContent">
-            <li class="nav-item">
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" 
-                data-bs-target="#collapseTarget"  aria-expanded="false" aria-controls="collapseTarget">Collapse</button>
-            </li>
-            <li class="nav-item" id="collapseTarget">
-                <a href="#">Target</a>
-            </li>
-        </ul>    
-        <div class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ request.user.username }}
-            </a>
-            <ul class="dropdown-menu dropdown-menu-lg-end">
-                <li><a class="dropdown-item" href="#">Sair</a></li>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+                </li>
             </ul>
-        </div>    
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ request.user.username }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg-end">
+                    <li><a class="dropdown-item" href="#">Sair</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 </nav>
 <div class="container-fluid bg-warning d-flex flex-column min-vh-100">
-    <div class="bg-success row m-1 mt-5">
-        <table class="table table-striped table-hover table-bordered table-light">
-            <thead>
-                <tr>
-                    <th scope="col">Status</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Transportadora</th>
-                    <th scope="col">Veículo</th>
-                    <th scope="col">Carga</th>
-                    <th scope="col">Valor da Carga</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for mr in monitoringrequest_list %}
-                <tr scope="row">
-                    <td>{{ mr.get_status_display }}</td>
-                    <td>{{ mr.pk }}</td>
-                    <td>{{ mr.shipping_company }}</td>
-                    <td>{{ mr.get_vehicle_display }}</td>
-                    <td>{{ mr.cargo_description }}</td>
-                    <td>{{ mr.cargo_value }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% endblock content %}    
+    <div class="container-fluid mt-5">
+        <div class="input-group">
+            <button class="btn btn-primary" type="button">
+                <i class="bi bi-search"></i>
+            </button>
+            <input type="text" class="form-control" placeholder="Filtrar SMs">
+        </div>
+        <div class="bg-success">
+            <table class="table table-striped table-hover table-bordered table-light">
+                <thead>
+                    <tr>
+                        <th scope="col">Status</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Transportadora</th>
+                        <th scope="col">Veículo</th>
+                        <th scope="col">Carga</th>
+                        <th scope="col">Valor da Carga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mr in monitoringrequest_list %}
+                    <tr scope="row">
+                        <td>{{ mr.get_status_display }}</td>
+                        <td>{{ mr.pk }}</td>
+                        <td>{{ mr.shipping_company }}</td>
+                        <td>{{ mr.get_vehicle_display }}</td>
+                        <td>{{ mr.cargo_description }}</td>
+                        <td>{{ mr.cargo_value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endblock content %}    
+        </div>
     </div>
+
 </div>
