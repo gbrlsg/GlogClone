@@ -40,20 +40,18 @@
                         <th scope="col">Status</th>
                         <th scope="col">ID</th>
                         <th scope="col">Transportadora</th>
-                        <th scope="col">Veículo</th>
-                        <th scope="col">Carga</th>
-                        <th scope="col">Valor da Carga</th>
+                        <th scope="col">Origem</th>
+                        <th scope="col">Destino</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for mr in monitoringrequest_list %}
+                    {% for mr in monreqs %}
                     <tr scope="row">
-                        <td>{{ mr.get_status_display }}</td>
+                        <td>{{ mr.status_display }}</td>
                         <td>{{ mr.pk }}</td>
                         <td>{{ mr.shipping_company }}</td>
-                        <td>{{ mr.get_vehicle_display }}</td>
-                        <td>{{ mr.cargo_description }}</td>
-                        <td>{{ mr.cargo_value }}</td>
+                        <td>{{ mr.origin }}</td>
+                        <td>{{ mr.destination }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

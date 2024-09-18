@@ -16,7 +16,9 @@ class MonitoringRequest(models.Model):
 
     status = models.CharField(max_length=1,choices=Status)
     shipping_company = models.CharField(max_length=255)
-    vehicle  = models.CharField(max_length=3,choices=VehicleType)
+    origin = models.CharField(max_length=255)
+    destination = models.CharField(max_length=255)
+    vehicle_type  = models.CharField(max_length=3,choices=VehicleType)
     cargo_description = models.CharField(max_length=255)
     cargo_value = models.PositiveIntegerField()
     logins = models.ManyToManyField(USER,related_name="monreqs")
