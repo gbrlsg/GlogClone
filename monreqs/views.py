@@ -15,4 +15,13 @@ class MonReqViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return self.request.user.monreqs.all()
+        qset = self.request.user.monreqs.all().annotate(
+            status_display=Case(
+                *[
+                    When(status=v, then=Value(str(l)))
+                    for v, l in MonitoringRequest.Status.choices
+                ],
+                output_field=CharField(),
+            )
+        )
+        return qset

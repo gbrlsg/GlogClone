@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+      "my-api-client/**/*.ts",
+      "assets/javascript/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }

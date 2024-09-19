@@ -303,6 +303,9 @@ components:
           title: ID
         status:
           $ref: '#/components/schemas/StatusEnum'
+        status_display:
+          type: string
+          readOnly: true
         shipping_company:
           type: string
           maxLength: 255
@@ -330,6 +333,7 @@ components:
       - pk
       - shipping_company
       - status
+      - status_display
       - vehicle_type
     PatchedMonReq:
       type: object
@@ -340,6 +344,9 @@ components:
           title: ID
         status:
           $ref: '#/components/schemas/StatusEnum'
+        status_display:
+          type: string
+          readOnly: true
         shipping_company:
           type: string
           maxLength: 255
