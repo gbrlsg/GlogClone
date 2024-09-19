@@ -1,0 +1,389 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /api/monitoring-requests/:
+    get:
+      operationId: monitoring_requests_list
+      tags:
+      - monitoring-requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MonReq'
+          description: ''
+    post:
+      operationId: monitoring_requests_create
+      tags:
+      - monitoring-requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonReq'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MonReq'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MonReq'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonReq'
+          description: ''
+  /api/monitoring-requests/{id}/:
+    get:
+      operationId: monitoring_requests_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - monitoring-requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonReq'
+          description: ''
+    put:
+      operationId: monitoring_requests_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - monitoring-requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonReq'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MonReq'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MonReq'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonReq'
+          description: ''
+    patch:
+      operationId: monitoring_requests_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - monitoring-requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMonReq'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMonReq'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMonReq'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonReq'
+          description: ''
+    delete:
+      operationId: monitoring_requests_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - monitoring-requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - ug
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  schemas:
+    MonReq:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        shipping_company:
+          type: string
+          maxLength: 255
+        origin:
+          type: string
+          maxLength: 255
+        destination:
+          type: string
+          maxLength: 255
+        vehicle_type:
+          $ref: '#/components/schemas/VehicleTypeEnum'
+        cargo_description:
+          type: string
+          maxLength: 255
+        cargo_value:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+      required:
+      - cargo_description
+      - cargo_value
+      - destination
+      - origin
+      - pk
+      - shipping_company
+      - status
+      - vehicle_type
+    PatchedMonReq:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        shipping_company:
+          type: string
+          maxLength: 255
+        origin:
+          type: string
+          maxLength: 255
+        destination:
+          type: string
+          maxLength: 255
+        vehicle_type:
+          $ref: '#/components/schemas/VehicleTypeEnum'
+        cargo_description:
+          type: string
+          maxLength: 255
+        cargo_value:
+          type: integer
+          maximum: 9223372036854775807
+          minimum: 0
+          format: int64
+    StatusEnum:
+      enum:
+      - O
+      - P
+      - C
+      type: string
+      description: |-
+        * `O` - O
+        * `P` - P
+        * `C` - C
+    VehicleTypeEnum:
+      enum:
+      - BXT
+      - LCV
+      - TCR
+      type: string
+      description: |-
+        * `BXT` - BXT
+        * `LCV` - LCV
+        * `TCR` - TCR
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

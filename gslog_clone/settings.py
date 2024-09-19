@@ -37,15 +37,21 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #3rd party
-    "crispy_forms", 
+    # 3rd party
+    "crispy_forms",
     "crispy_bootstrap5",
     "rest_framework",
-    #local
+    "drf_spectacular",
+    # local
     "accounts",
     "pages",
     "monreqs",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
