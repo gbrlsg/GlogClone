@@ -17,12 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from drf_spectacular.views import SpectacularAPIView
-
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
     path("api/", include("monreqs.urls")),
     path("", include("pages.urls")),
+    path("", RedirectView.as_view(pattern_name="login")),
 ]
